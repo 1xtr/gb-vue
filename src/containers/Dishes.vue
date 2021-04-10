@@ -139,11 +139,6 @@ export default {
 </script>
 
 <style>
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
 .center {
   padding: 0 calc(50vw - 900px / 2);
 }
@@ -213,11 +208,6 @@ export default {
 #dice {
   width: 50px;
   height: 50px;
-}
-
-.guess {
-  font-size: 32px;
-  font-weight: bold;
 }
 
 .humanChoice {

@@ -10,14 +10,18 @@ const routes = [
   {
     path: "/passgen",
     name: "Passgen",
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/PassGen.vue"),
+    component: () => import(/* webpackChunkName: "about" */ "../views/PassGen"),
   },
   {
     path: "/dishes",
     name: "Dishes",
+    component: () => import(/* webpackChunkName: "about" */ "../views/Dishes"),
+  },
+  {
+    path: "/guess",
+    name: "Guess",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Dishes.vue"),
+      import(/* webpackChunkName: "about" */ "../views/GuessView"),
   },
 ];
 
