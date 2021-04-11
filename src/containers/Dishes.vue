@@ -6,7 +6,7 @@
       все мыльницы после выбора.
     </div>
     <div class="top top__buttons">
-      <button class="button" id="new-game" @click="newGame">New game</button>
+      <button class="button" id="new-game" @click="newGame">Start</button>
       <button class="button" id="resetWins" @click="resetWins">Reset</button>
       <button
         class="button"
@@ -17,10 +17,13 @@
         Show All
       </button>
     </div>
-    <div class="top top__user">
+    <div class="top top__user" :class="this.winner === 'human' ? 'winner' : ''">
       Игрок:<span class="score__user_current">{{ humanScore.totalWins }}</span>
     </div>
-    <div class="top top__comp">
+    <div
+      class="top top__comp"
+      :class="this.winner === 'computer' ? 'winner' : ''"
+    >
       Компьютер:<span class="score__comp_current">{{
         computerScore.totalWins
       }}</span>
@@ -56,6 +59,7 @@ export default {
       dishes: [],
       dices: [],
       showAllButton: false,
+      winner: "",
     };
   },
   methods: {
@@ -109,18 +113,22 @@ export default {
       let compScore = this.computerScore.targetDish.dice;
       if (gamerScore > compScore) {
         this.humanScore.totalWins++;
+        this.winner = "human";
       } else if (gamerScore < compScore) {
         this.computerScore.totalWins++;
+        this.winner = "computer";
       } else {
         this.draw = true;
       }
     },
     newGame() {
+      this.winner = "";
       this.showAllButton = false;
       this.humanStep = true;
       this.dishes = [];
       this.getDices(); // Генерим рандомно число на игровой кости от 1 до 6 включительно
       this.createDishes();
+      this.humanScore.targetDish = this.computerScore.targetDish = {};
     },
     resetWins() {
       this.humanScore.totalWins = this.computerScore.totalWins = 0;
@@ -139,6 +147,9 @@ export default {
 </script>
 
 <style>
+.winner {
+  outline: solid 3px red;
+}
 .center {
   padding: 0 calc(50vw - 900px / 2);
 }
@@ -152,11 +163,11 @@ export default {
   grid-template: 80px 60px 100px 100px / repeat(6, 1fr);
   gap: 16px;
   align-content: center;
-  margin: 50px 10px;
+  margin: 0 10px;
 }
 
 .tutorial {
-  grid-column: 1/7;
+  grid-column: span 6;
   padding: 16px;
   background-color: #35d05d;
 }
@@ -170,13 +181,13 @@ export default {
   justify-content: flex-start;
 }
 .top__buttons {
-  grid-column: 1/3;
+  grid-column: span 2;
 }
 .top__user {
-  grid-column: 3/5;
+  grid-column: span 2;
 }
 .top__comp {
-  grid-column: 5/7;
+  grid-column: span 2;
 }
 
 .button {

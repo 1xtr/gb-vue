@@ -6,6 +6,9 @@
     <router-link to="/dishes">Игра Мыльницы</router-link>
   </div>
   <router-view />
+  <footer class="footer">
+    <div class="footer__copyrights">Copyright &copy;2021 TrendCo.space</div>
+  </footer>
 </template>
 
 <style lang="scss">
@@ -24,11 +27,13 @@ body {
 }
 
 .body {
+  min-height: 100vh;
   display: grid;
-  grid-template-rows: 1fr 100px;
+  grid-template-rows: 1fr auto;
 }
 
 .footer {
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,11 +51,10 @@ body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   height: 100%;
   min-height: 100%;
-  min-width: 600px;
+  min-width: 320px;
 }
 
 #nav {

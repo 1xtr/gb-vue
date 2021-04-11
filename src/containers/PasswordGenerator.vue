@@ -1,81 +1,79 @@
 <template>
-  <div class="pass-gen-form">
-    <form>
-      <fieldset>
-        <legend>Рецепт пароля</legend>
-        <p>
-          <label>
-            <input
-              type="checkbox"
-              v-bind:value="LettersUp"
-              v-model="StringToPassGen"
-            />
-          </label>
-          Заглавные буквы A-Z
-        </p>
-        <p>
-          <label>
-            <input
-              type="checkbox"
-              v-bind:value="LettersLow"
-              v-model="StringToPassGen"
-              class="checked"
-            />
-          </label>
-          Строчные буквы a-z
-        </p>
-        <p>
-          <label>
-            <input
-              type="checkbox"
-              v-bind:value="Numbers"
-              v-model="StringToPassGen"
-              class="checked"
-            />
-          </label>
-          Цифры 0-9
-        </p>
-        <p>
-          <label>
-            <input
-              type="checkbox"
-              v-bind:value="Symbols"
-              v-model="StringToPassGen"
-            />
-          </label>
-          Спецсимволы @#{];
-        </p>
-        <p>
-          <label
-            >Длина пароля:
-            <input
-              type="number"
-              v-model.number="passLen"
-              maxlength="2"
-              size="1"
-              min="6"
-              max="50"
-            />
-          </label>
-        </p>
-      </fieldset>
-      <p>
-        <input type="button" value="Содать пароль!" @click="passGeneration()" />
-      </p>
-      <p id="password">
+  <form class="passgen__form">
+    <fieldset class="passgen__fieldset">
+      <legend>Рецепт пароля</legend>
+      <p class="passgen__fieldset__p">
         <label>
-          <input type="text" readonly v-model="password" />
+          <input
+            type="checkbox"
+            v-bind:value="LettersUp"
+            v-model="StringToPassGen"
+          />
+        </label>
+        Заглавные буквы A-Z
+      </p>
+      <p class="passgen__fieldset__p">
+        <label>
+          <input
+            type="checkbox"
+            v-bind:value="LettersLow"
+            v-model="StringToPassGen"
+            class="checked"
+          />
+        </label>
+        Строчные буквы a-z
+      </p>
+      <p class="passgen__fieldset__p">
+        <label>
+          <input
+            type="checkbox"
+            v-bind:value="Numbers"
+            v-model="StringToPassGen"
+            class="checked"
+          />
+        </label>
+        Цифры 0-9
+      </p>
+      <p class="passgen__fieldset__p">
+        <label>
+          <input
+            type="checkbox"
+            v-bind:value="Symbols"
+            v-model="StringToPassGen"
+          />
+        </label>
+        Спецсимволы @#{];
+      </p>
+      <p class="passgen__fieldset__p">
+        <label
+          >Длина пароля:
+          <input
+            type="number"
+            v-model.number="passLen"
+            maxlength="2"
+            size="1"
+            min="6"
+            max="50"
+          />
         </label>
       </p>
-      <p id="copyButton">
-        <input
-          type="button"
-          value="Скопировать пароль в буфер обмена"
-          @click="copyToClipBoard()"
-        />
-      </p>
-    </form>
-  </div>
+    </fieldset>
+    <p class="passgen__form__p">
+      <input type="button" value="Содать пароль!" @click="passGeneration()" />
+    </p>
+    <p class="passgen__form__p" id="password">
+      <label>
+        <input type="text" readonly v-model="password" />
+      </label>
+    </p>
+    <p class="passgen__form__p" id="copyButton">
+      <input
+        type="button"
+        value="Скопировать пароль в буфер обмена"
+        @click="copyToClipBoard()"
+      />
+    </p>
+  </form>
 </template>
 
 <script>
@@ -135,24 +133,34 @@ export default {
 };
 </script>
 
-<style scoped>
-.pass-gen-form {
-  min-width: 200px;
-  padding: 0 calc(50vw - 500px / 2);
-  text-align: left;
-}
-.pass-gen-form {
-  /*margin: 120px auto;*/
-  /*border-style: solid;
-  border-width: 0.2px;*/
-  width: 300px;
-  height: 300px;
-}
-.pass-gen-form form {
-  line-height: 1.5;
-}
-.pass-gen-form fieldset {
-  padding: 12px;
-  margin-bottom: 10px;
-}
+<style lang="sass" scoped>
+.passgen__form
+  text-align: left
+  &__p
+    padding: 6px 0
+.passgen__fieldset
+  padding: 12px
+  margin-bottom: 6px
+  &__p
+    padding: 3px 0
+
+/*.pass-gen-form {*/
+/*  min-width: 200px;*/
+/*  padding: 0 calc(50vw - 500px / 2);*/
+/*  text-align: left;*/
+/*}*/
+/*.pass-gen-form {*/
+/*  !*margin: 120px auto;*!*/
+/*  !*border-style: solid;*/
+/*  border-width: 0.2px;*!*/
+/*  width: 300px;*/
+/*  height: 300px;*/
+/*}*/
+/*.pass-gen-form form {*/
+/*  line-height: 1.5;*/
+/*}*/
+/*.pass-gen-form fieldset {*/
+/*  padding: 12px;*/
+/*  margin-bottom: 10px;*/
+/*}*/
 </style>

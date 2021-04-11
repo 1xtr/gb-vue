@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <DishesComp ref="dishesRef" />
-  </div>
+  <DishesComp ref="dishesRef" />
 </template>
 
 <script>
